@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://euniclab.github.io/react_app_template",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
