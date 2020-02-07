@@ -101,15 +101,16 @@ handleClick(event){
      var day = today.getDate()
      var month= today.getMonth()
      var year= today.getFullYear()
-     var date= day+"/" + month+1 +"/" +year
+     var useMonth= month +1
+     var date= day+"/" + useMonth +"/" +year
      console.log(cord)
 
      this.setState({weather:cord, cityInput:"", city:town, temp: temp, date:date, country:country, displayWidget:"widget", pictureFrame: "pictureFrame"})}
 
 
  
- if (this.state.temp <10) { this.setState({ picture: global.winter[global.clickCount], to: global.winter.length})}
-if (this.state.temp>17) { this.setState({picture: global.summer[global.clickCount], to: global.summer.length})}
+ if (this.state.temp <=10) { this.setState({ picture: global.winter[global.clickCount], to: global.winter.length})}
+if (this.state.temp>=17) { this.setState({picture: global.summer[global.clickCount], to: global.summer.length})}
 if (this.state.temp<17 && this.state.temp>10){ this.setState ({picture: global.autumn[global.clickCount], to: global.autumn.length})}
 
 
@@ -122,8 +123,8 @@ if (this.state.temp<17 && this.state.temp>10){ this.setState ({picture: global.a
 handleForwardClick(){
    global.clickCount++
    this.setState({navArrow1:"navArrow1"})
-  if (this.state.temp <10) { this.setState({ picture: global.winter[global.clickCount], from: global.clickCount+1})}
-if (this.state.temp>17) { this.setState({picture: global.summer[global.clickCount], from: global.clickCount+1})}
+  if (this.state.temp <=10) { this.setState({ picture: global.winter[global.clickCount], from: global.clickCount+1})}
+if (this.state.temp>=17) { this.setState({picture: global.summer[global.clickCount], from: global.clickCount+1})}
 if (this.state.temp<17 && this.state.temp>10){ this.setState ({picture: global.autumn[global.clickCount], from: global.clickCount+1})}
  
   
@@ -142,8 +143,8 @@ handleBackwardClick(){
  global.clickCount--
   this.setState({navArrow2:"navArrow2"})
  console.log(global.clickCount)
-if (this.state.temp <10) { this.setState({ picture: global.winter[global.clickCount], from: global.clickCount+1})}
-if (this.state.temp>17) { this.setState({picture: global.summer[global.clickCount], from: global.clickCount+1 })}
+if (this.state.temp <=10) { this.setState({ picture: global.winter[global.clickCount], from: global.clickCount+1})}
+if (this.state.temp>=17) { this.setState({picture: global.summer[global.clickCount], from: global.clickCount+1 })}
 if (this.state.temp<17 && this.state.temp>10){ this.setState ({picture: global.autumn[global.clickCount], from: global.clickCount+1})}
 
   
