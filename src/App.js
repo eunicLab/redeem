@@ -58,10 +58,14 @@ class App extends React.Component {
 
   handleClick = event => {
     clickCount = 0;
-    this.setState({ navArrow2: 'navArrow2', navArrow1: 'noDisplay' });
+    this.setState({
+      navArrow2: 'navArrow2',
+      navArrow1: 'noDisplay',
+      loading: true,
+      from: '1'
+    });
 
     event.preventDefault();
-    this.setState({ loading: true });
 
     let city = this.state.cityInput;
 
