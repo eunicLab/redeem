@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import backwardArrow from './backwardArrow.png';
-import forwardArrow from './forwardArrow.png';
+import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io';
 import a0 from './images/autumn_casual_female.jpg';
 import a1 from './images/autumn_casual_male1.jpg';
 import a2 from './images/autumn_cultural_male.png';
@@ -43,26 +43,18 @@ class App extends React.Component {
       country: '',
       displayWidget: 'noDisplay',
       picture: '',
-      pictureFrame: 'noDisplay',
-      navArrow1: 'noDisplay',
-      navArrow2: 'noDisplay',
-      from: '1',
-      to: '5'
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.preventDefault();
     this.setState({ cityInput: event.target.value });
   };
 
-  handleClick = event => {
+  handleClick = (event) => {
     clickCount = 0;
     this.setState({
-      navArrow2: 'navArrow2',
-      navArrow1: 'noDisplay',
       loading: true,
-      from: '1'
     });
 
     event.preventDefault();
@@ -74,11 +66,11 @@ class App extends React.Component {
         city +
         '&APPID=daae827db6346edc7ba462a1a3a48509'
     )
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         this.setState({
           loading: false,
-          character: data
+          character: data,
         });
 
         if (this.state.character.cod === '404' || this.state.cityInput === '') {
@@ -87,7 +79,6 @@ class App extends React.Component {
             city: '',
             cityInput: '',
             displayWidget: 'widget',
-            pictureFrame: 'noDisplay'
           });
         } else {
           let cord = this.state.character.weather[0].description;
@@ -110,107 +101,77 @@ class App extends React.Component {
             date: date,
             country: country,
             displayWidget: 'widget',
-            pictureFrame: 'pictureFrame'
           });
         }
 
         if (this.state.temp <= 10) {
           this.setState({
             picture: winter[clickCount],
-            to: winter.length
           });
         }
         if (this.state.temp >= 17) {
           this.setState({
             picture: summer[clickCount],
-            to: summer.length
           });
         }
         if (this.state.temp < 17 && this.state.temp > 10) {
           this.setState({
             picture: autumn[clickCount],
-            to: autumn.length
           });
         }
       });
   };
 
   handleForwardClick = () => {
-    clickCount++;
-    this.setState({ navArrow1: 'navArrow1' });
     if (this.state.temp <= 10) {
-      this.setState({
-        picture: winter[clickCount],
-        from: clickCount + 1
-      });
-    }
-    if (this.state.temp >= 17) {
+      this.setState({ picture: winter[clickCount] });
+      var arrayWeatherPictures = [w0, w1, w2, w3, w4, w5];
+    } else if (this.state.temp >= 17) {
       this.setState({
         picture: summer[clickCount],
-        from: clickCount + 1
       });
-    }
-    if (this.state.temp < 17 && this.state.temp > 10) {
-      this.setState({
-        picture: autumn[clickCount],
-        from: clickCount + 1
-      });
+      arrayWeatherPictures = [s0, s1, s2, s3, s4, s5, s6, s7, s8];
+    } else {
+      if (this.state.temp < 17 && this.state.temp > 10) {
+        this.setState({ picture: autumn[clickCount] });
+        arrayWeatherPictures = [a0, a1, a2, a3];
+      }
     }
 
-    if (this.state.picture === winter[winter.length - 2]) {
-      this.setState({ navArrow2: 'noDisplay' });
+    if (clickCount === arrayWeatherPictures.length - 1) {
+      clickCount = 0;
+    } else {
+      clickCount = clickCount + 1;
     }
-    if (this.state.picture === summer[summer.length - 2]) {
-      this.setState({ navArrow2: 'noDisplay' });
-    }
-    if (this.state.picture === autumn[autumn.length - 2]) {
-      this.setState({ navArrow2: 'noDisplay' });
-    }
-    if (clickCount === 0) {
-      this.setState({ navArrow1: 'noDisplay' });
-    }
+    this.setState({ picture: arrayWeatherPictures[clickCount] });
   };
 
   handleBackwardClick = () => {
-    clickCount--;
-    this.setState({ navArrow2: 'navArrow2' });
     if (this.state.temp <= 10) {
-      this.setState({
-        picture: winter[clickCount],
-        from: clickCount + 1
-      });
-    }
-    if (this.state.temp >= 17) {
+      this.setState({ picture: winter[clickCount] });
+      var arrayWeatherPictures = [w0, w1, w2, w3, w4, w5];
+    } else if (this.state.temp >= 17) {
       this.setState({
         picture: summer[clickCount],
-        from: clickCount + 1
       });
+      arrayWeatherPictures = [s0, s1, s2, s3, s4, s5, s6, s7, s8];
+    } else {
+      if (this.state.temp < 17 && this.state.temp > 10) {
+        this.setState({ picture: autumn[clickCount] });
+        arrayWeatherPictures = [a0, a1, a2, a3];
+      }
     }
-    if (this.state.temp < 17 && this.state.temp > 10) {
-      this.setState({
-        picture: autumn[clickCount],
-        from: clickCount + 1
-      });
-    }
-
-    if (this.state.picture === winter[winter.length - 2]) {
-      this.setState({ navArrow2: 'noDisplay' });
-    }
-    if (this.state.picture === summer[summer.length - 2]) {
-      this.setState({ navArrow2: 'noDisplay' });
-    }
-    if (this.state.picture === autumn[autumn.length - 2]) {
-      this.setState({ navArrow2: 'noDisplay' });
-    }
-
     if (clickCount === 0) {
-      this.setState({ navArrow1: 'noDisplay' });
+      clickCount = arrayWeatherPictures.length - 1;
+    } else {
+      clickCount = clickCount - 1;
     }
+    this.setState({ picture: arrayWeatherPictures[clickCount] });
   };
 
   render() {
     return (
-      <div className='main'>
+      <div className='container'>
         <form>
           <input
             type='text'
@@ -226,40 +187,42 @@ class App extends React.Component {
           </button>
         </form>
 
-        <div className={this.state.displayWidget}>
-          <b>
-            <p>
-              {this.state.city
-                ? this.state.city + ', ' + this.state.country
-                : ''}{' '}
-            </p>
-          </b>
-          <p>{this.state.city ? this.state.date : ''}</p>
+        <div className={this.state.city === '' ? 'noDisplay' : 'card'}>
+          <div className='card-body image-center text-center '>
+            <div className='card-text'>
+              <b>
+                <span>
+                  {this.state.city
+                    ? this.state.city + ', ' + this.state.country + ','
+                    : ''}{' '}
+                </span>
+              </b>
+              <b>
+                {this.state.loading ? (
+                  <h3>loading...</h3>
+                ) : (
+                  this.state.weather + ',  '
+                )}
+              </b>
 
-          <p>{this.state.loading ? <h3>loading...</h3> : this.state.weather}</p>
+              <b>{this.state.city ? this.state.temp : ''}</b>
 
-          <b>{this.state.city ? this.state.temp : ''}</b>
-
-          <b className={this.state.city === '' ? 'noDisplay' : ''}>
-            <sup>0</sup>C
-          </b>
-        </div>
-
-        <div className={this.state.pictureFrame}>
-          <img
-            className={this.state.navArrow1}
-            src={backwardArrow}
-            onClick={this.handleBackwardClick}
-          />
-          <img className='pictures' src={this.state.picture} />
-          <img
-            className={this.state.navArrow2}
-            src={forwardArrow}
-            onClick={this.handleForwardClick}
-          />
-          <p>
-            {this.state.from} of {this.state.to}
-          </p>
+              <b className={this.state.city === '' ? 'noDisplay' : ''}>
+                <sup>0</sup>C
+              </b>
+              <p>{this.state.city ? this.state.date : ''}</p>
+            </div>
+            <div>
+              <IoIosArrowBack onClick={this.handleBackwardClick} />
+              <img
+                className='pictures'
+                src={this.state.picture}
+                alt='weather'
+              />
+              <IoIosArrowForward onClick={this.handleForwardClick} />
+            </div>
+          </div>
+          <div className='card-footer image-center text-center '></div>
         </div>
       </div>
     );
