@@ -6,21 +6,6 @@
   height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
 form {
   background: -webkit-linear-gradient(bottom, #cccccc, #eeeeee 175px);
   background: -moz-linear-gradient(bottom, #cccccc, #eeeeee 175px);
@@ -50,7 +35,7 @@ form {
       rgba(30, 115, 172, 0.7),
       rgba(142, 57, 153, 0.6)
     ),
-    url(footer.png);
+    url(images/footer.png);
   background-color: black;
 }
 
@@ -79,7 +64,7 @@ input:focus {
   border: 1px solid #008cba;
 }
 
-.btn {
+.mybtn {
   color: white;
   background: transparent;
   border-radius: 6px;
@@ -96,7 +81,7 @@ input:focus {
   margin-top: 3%;
   padding: 2% 2%;
 }
-.btn:hover {
+.mybtn:hover {
   background-color: #008cba;
   color: white;
 }
@@ -127,95 +112,15 @@ input:focus {
 .noDisplay {
   display: none;
 }
-.navArrow1 {
-  float: left;
-  width: 4%;
-  height: 4%;
-  display: block;
-  cursor: pointer;
-
-  margin-left: -4%;
-  position: absolute;
-  margin-top: 39%;
-}
-
-.navArrow2 {
-  width: 4%;
-  height: 4%;
-  display: block;
-  cursor: pointer;
-  margin-left: 302px;
-  position: absolute;
-  margin-top: -45%;
-}
-
-.pictureFrame {
-  background: -webkit-linear-gradient(bottom, #cccccc, #eeeeee 175px);
-  background: -moz-linear-gradient(bottom, #cccccc, #eeeeee 175px);
-  background: linear-gradient(bottom, #cccccc, #eeeeee 175px);
-  font-family: Tahoma, Geneva, sans-serif;
-  font-size: 80%;
-  line-height: 80%;
-  text-decoration: none;
-  border-radius: 10px;
-  padding: 2%;
-  border: 1px solid #999;
-  border: inset 1px solid #333;
-  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  background-color: white;
-  margin-left: 5%;
-  margin-bottom: 5%;
-  text-align: center;
-  z-index: 1;
-  display: inline-block;
-  position: absolute;
-  margin-left: 12%;
-}
-
-.pictures {
-  width: 380px;
-  height: 380px;
-}
-@media (max-width: 26.25em) {
-  .pictureFrame {
-    background: -webkit-linear-gradient(bottom, #cccccc, #eeeeee 40px);
-    background: -moz-linear-gradient(bottom, #cccccc, #eeeeee 40px);
-    background: linear-gradient(bottom, #cccccc, #eeeeee 40px);
-    margin-left: 3%;
-    width: 35%;
-  }
-  .pictures {
-    width: 80%;
-    height: 140px;
-  }
-
-  .navArrow2 {
-    margin-left: 90%;
-    margin-top: -7em;
-  }
-  .navArrow1 {
-    margin-top: 4em;
-  }
-  form {
-    font-size: 60%;
-    margin-top: 10%;
-  }
-}
-
-body {
-  height: 100vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(30, 115, 172, 0.7),
-      rgba(142, 57, 153, 0.6)
-    ),
-    url(background.jpg);
-}
 
 .card {
   margin-left: 5%;
   margin-right: 5%;
   width: 90%;
+}
+.carousel-inner img {
+  margin: auto;
+}
+.carousel-indicators {
+  background-color: rgba(84, 87, 88, 0.7);
 }
