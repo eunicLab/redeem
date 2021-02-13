@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/react": "^11.2.5",
+    "bootstrap": "^4.6.0",
     "gh-pages": "^2.2.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -29,5 +31,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
   }
 }

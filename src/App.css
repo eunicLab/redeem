@@ -6,7 +6,7 @@
   height: 40vmin;
 }
 
-form {
+.myform {
   background: -webkit-linear-gradient(bottom, #cccccc, #eeeeee 175px);
   background: -moz-linear-gradient(bottom, #cccccc, #eeeeee 175px);
   background: linear-gradient(bottom, #cccccc, #eeeeee 175px);
